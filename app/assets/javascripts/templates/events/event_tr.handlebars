@@ -1,0 +1,16 @@
+{{#with view}}
+<td class="span1">
+    {{view Ember.Checkbox checkedBinding="content.isFinished"}}
+</td>
+<td class="span10">
+    {{#unless content.isFinished}}
+        {{view Emberjs.EventTextField valueBinding="content.title" isEditingBinding="isEditing" class="span9"}}
+    {{else}}
+        <span class="title">{{content.title}}</span>
+    {{/unless}}
+</td>
+<td class="span1">
+    <button type="button" {{action destroyEvent content}} {{bindAttr class=":close isUnfinished:disabled"}} {{bindAttr
+    disabled="isUnfinished"}}>&times;</button>
+</td>
+{{/with}}

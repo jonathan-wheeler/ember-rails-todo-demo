@@ -1,0 +1,15 @@
+.finished {
+  td span.title {
+    text-decoration: line-through;
+  }
+}
+
+td {
+  line-height: 47px;
+  height: 47px;
+  padding: 2px;
+
+  input[type="text"] {
+    margin: 0
+  }
+}

@@ -1,1 +1,20 @@
-{{ outlet }}
+<div class="page-header">
+    <h1>待办事项</h1>
+</div>
+<table class="table table-striped">
+    <tbody>
+    {{#each e in controller}}
+    {{view Emberjs.EventTrView contentBinding='e'}}
+    {{/each}}
+    </tbody>
+</table>
+<div>
+    <button class='btn btn-primary'
+    {{action addEvent}}>New Event</button>
+
+    {{#if hasRemaining }}
+    <span class="pull-right">{{remaining}} events to do</span>
+    {{else}}
+    <span class="pull-right">Great! All Done.</span>
+    {{/if}}
+</div>

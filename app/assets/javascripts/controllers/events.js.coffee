@@ -1,39 +1,14 @@
-Emberjs.EventsNewController = Ember.ObjectController.extend(
+Emberjs.EventsController = Ember.ArrayController.extend(
+  remaining: (() ->
+    this.get('content').filterProperty('isFinished', false).get('length')).property('content.@each.isFinished')
 
-  save: () ->
-    this.get('store').commit()
+  hasRemaining: (() ->
+    this.get('remaining') > 0).property('remaining')
 
-  cancel: () ->
-    this.transitionToRoute('events')
+  destroyEvent: (event) ->
+    event.deleteRecord()
+    event.get('store').commit()
 
-  transitionAfterSave: (() ->
-    if this.get('content.id')
-      this.transitionToRoute('events')).observes('content.id')
-
-)
-
-Emberjs.NeedEventController = Ember.ObjectController.extend(
-  needs: 'event'
-)
-
-Emberjs.EventIndexController = Emberjs.NeedEventController.extend()
-
-Emberjs.EventEditController = Emberjs.NeedEventController.extend(
-  save: () ->
-    this.get('store').commit()
-
-    if this.get('controllers.event').get('content').get('isLoaded')
-      this.transitionToRoute('events')
-
-  cancel: () ->
-    this.transitionToRoute('events')
-
-)
-
-Emberjs.EventDestroyController = Emberjs.NeedEventController.extend(
-  destroyRecord: () ->
-    if window.confirm("Are you sure you want to delete this event?")
-      this.get('controllers.event').get('content').deleteRecord()
-      this.get('store').commit()
-      this.transitionToRoute('events')
+  addEvent: () ->
+    this.get('content').push(Emberjs.Event.createRecord(status: 'actived'))
 )
