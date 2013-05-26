@@ -11,6 +11,8 @@ Functions:
 
 Installation:
 
+Don't forget to modify database.yml
+
 ```shell
 > bundle
 > rake db:migrate
