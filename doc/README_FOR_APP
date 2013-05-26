@@ -1,0 +1,22 @@
+Use this README file to introduce your application and point to useful places in the API for learning more.
+Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+rails generate bootstrap:install less
+rails g bootstrap:layout application fluid
+rails g ember:bootstrap -g --javascript-engine coffee
+----------------------------------------------
+rails g scaffold event title:string ststus:string   <-- rails style
+rails g bootstrap:themed Events (复数)
+----------------------------------------------
+rails g resource event title:string ststus:string   <-- ember style
+
+1, route.rb 加入namespace 和 root
+2, 生成首页待用 ember#start
+3, events_controller.rb 加入namespace，换位置，index & show
+4, events_controller_test.rb 测试用例
+5, store.js revision:12 namespace修改
+6, touch app/assets/javascripts/routes/events_route.js
+7, app/assets/javascripts/router.js mapping
+8,
+
+

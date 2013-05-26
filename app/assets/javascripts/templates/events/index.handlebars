@@ -1,0 +1,30 @@
+<div class="page-header">
+    <h1>待办事项</h1>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each e in controller}}
+    <tr>
+        <td>{{#linkTo 'event' e}}{{e.title}}{{/linkTo}}</td>
+        <td>{{e.statusDesc}}</td>
+        <td>
+            {{#linkTo 'event.edit' e}}编辑{{/linkTo}}
+            {{#linkTo 'event.destroy' e}}删除{{/linkTo}}
+        </td>
+    </tr>
+    {{else}}
+    <tr>
+        <td colspan="3">太好了，都搞定了
+        </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
+{{#linkTo 'events.new' class='btn btn-primary' tagName='button'}}New{{/linkTo}}
